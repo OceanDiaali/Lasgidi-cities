@@ -3,10 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/about"
+        android:orderInCategory="100"
+        app:showAsAction="never"
         android:title="@string/about"
-        app:showAsAction="never"/>
+        />
     <item android:id="@+id/help"
+        app:showAsAction="never"
         android:title="@string/help"
-        app:showAsAction="never"/>
+        />
 
 </menu>

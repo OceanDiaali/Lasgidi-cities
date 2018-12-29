@@ -5,6 +5,8 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.ActionBar
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -15,17 +17,17 @@ class City : AppCompatActivity() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city)
 
-        //val ab = actionBar
 
         val extras = intent.extras ?: return
 
         val citi = extras.getString("City name")
 
-        var choices = arrayOf("Read about $citi", "Watch videos about $citi")
+        var choices = arrayOf("Read about $citi", "Watch videos about $citi", "Quiz on $citi")
 
         val adapter = ArrayAdapter(this, R.layout.listview_item, choices)
 
@@ -46,6 +48,13 @@ class City : AppCompatActivity() {
                         val intent = Intent(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=$citi")))
                         startActivity(intent)
                     }
+
+                    2 ->  {
+                        val i = Intent(applicationContext, Quiz::class.java)
+                        i.putExtra("City quiz", "$citi")
+                        startActivity(i)
+                    }
+
                 }
             }
         } // click listener
@@ -56,4 +65,6 @@ class City : AppCompatActivity() {
 
         //Toast.makeText(applicationContext, "City name: $citi", Toast.LENGTH_LONG).show()
     }
+
+
 } // end of class
